@@ -24,7 +24,7 @@ def analisar_avaliacoes():
             print(f"Valores distintos encontrados na coluna: {valores_encontrados}")
 
             # Dicionário para armazenar contagens (garante que todas as notas apareçam mesmo se zeradas)
-            contagem = {5: 0, 4: 0, 3: 0, 2: 0, 1: 0}
+            contagem = {5: 0, 4: 0, 3: 0, 2: 0, 1: 0} # Inicializa inteiros, outros serão adicionados dinamicamente
             vazios = 0
             
             for nota, quantidade in resultados:
@@ -35,9 +35,20 @@ def analisar_avaliacoes():
                         # Isso resolve casos como "5.0", " 5 ", ou 5 (inteiro)
                         nota_str = str(nota).strip()
                         if nota_str:
-                            nota_int = int(float(nota_str))
-                            if nota_int in contagem:
-                                contagem[nota_int] += quantidade
+                            val = float(nota_str)
+                            
+                            # Regras de arredondamento solicitadas para valores específicos
+                            if abs(val - 4.333333) < 0.01:
+                                val = 4.5
+                            elif abs(val - 3.333333) < 0.01:
+                                val = 3.5
+                            
+                            # Se for inteiro (ex: 5.0), usa chave inteira, senão mantém float (ex: 4.5)
+                            chave = int(val) if val.is_integer() else val
+                            
+                            # Consideramos válido se estiver entre 1 e 5 (incluindo 3.5, 4.5)
+                            if 1 <= chave <= 5:
+                                contagem[chave] = contagem.get(chave, 0) + quantidade
                                 eh_valido = True
                     except ValueError:
                         pass # Se der erro na conversão, considera inválido/vazio
@@ -46,8 +57,9 @@ def analisar_avaliacoes():
                     vazios += quantidade
             
             print("\n--- Quantidade de Avaliações por Nota ---")
-            for i in range(5, 0, -1):
-                print(f"Nota {i}: {contagem[i]} avaliações")
+            # Ordena as chaves (inteiros e floats) em ordem decrescente para exibição
+            for chave in sorted(contagem.keys(), reverse=True):
+                print(f"Nota {chave}: {contagem[chave]} avaliações")
                 
             print(f"Sem nota (Vazios/Nulos): {vazios} linhas")
 

@@ -1,0 +1,25 @@
+# --- SEGURANÇA ---
+# Nunca envie credenciais para o repositório
+.env
+
+# --- AMBIENTE VIRTUAL ---
+# Pastas de dependências locais
+venv/
+.venv/
+env/
+bin/
+lib/
+
+# --- CACHE E COMPILAÇÃO ---
+# Arquivos gerados pelo Python durante a execução
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- SISTEMA OPERACIONAL ---
+.DS_Store
+Thumbs.db
+
+# --- IDEs ---
+.vscode/
+.idea/
