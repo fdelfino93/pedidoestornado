@@ -116,3 +116,16 @@ Atrasos por relacao entre estados:
 - Mesmo estado: 2384 (27.36%)
 
 9) Identificar o padrão dos clientes (localização, método de pagamento, parcelas, entrega antes da previsão, notas, tipos de produtos) que fizeram recompra
+código da resposta: 9_recompra.py
+
+Resumo de clientes com recompra (proxy):
+- Clientes com recompra: 11978
+- Registros analisados: 110018
+Padrao (top 1 por coluna):
+- Estado: SP (46938)
+- Cidade: sao paulo (17454)
+- Metodo de pagamento: cartao_credito (83165)
+- Parcelas (mais comum): 1 (52811)
+- Entrega (mais comum): no prazo/antes (92.16% no prazo/antes)
+- Nota (mais comum): 5 (60828)
+- Categoria (mais comum): cama_mesa_banho (10826)
