@@ -63,3 +63,10 @@ Correlacao entre quantidade de fotos e volume de vendas (Pearson): -0.620
 Esse valor -0,620 indica uma correlação negativa moderada a forte entre a quantidade de fotos e o volume de vendas no agregado por número de fotos. Em termos simples: quanto maior a quantidade de fotos, menor tende a ser o número de vendas — e vice‑versa.
 
 Importante: isso não prova causalidade. Esse resultado pode estar refletindo mix de categorias (ex.: categorias com mais fotos vendem menos), preços, ou outros fatores. É um sinal de associação agregada, não de causa direta.
+
+6) O volume e o peso dos produtos impactam no valor do frete?
+
+Peso (g) x Frete: 0.610
+Volume (cm3) x Frete: 0.587
+
+Isso indica uma correlação positiva moderada entre peso/volume do produto e o valor do frete. Em termos práticos, à medida que o peso aumenta, o frete tende a aumentar também (r = 0,610). O mesmo ocorre com o volume: produtos maiores em volume costumam ter fretes mais altos (r = 0,587). Esses valores sugerem impacto relevante, mas não perfeito — ou seja, peso e volume explicam parte do frete, mas outros fatores (distância, região, modalidade de envio, promoções) também influenciam.
