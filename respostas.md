@@ -1,12 +1,18 @@
-1)  é o tempo médio/mediano desde a aprovação do pedido até a sua entrega?
+
+
+1) Qual é o tempo médio/mediano desde a aprovação do pedido até a sua entrega?
+código da resposta: 1_tempo_de_entrega.py
 Tempo Médio de Entrega:   11 dias
 Tempo Mediano de Entrega: 9 dias
 
 2) Identificar qual o mês com maior quantidade de vendas (em número de pedido) e o mês com os maiores pagamentos
+código da resposta: 2_mes_mais_vendas.py
 O mês com maior quantidade de vendas foi: 08 com 10843 pedidos.
 O mês com maior volume de vendas foi: Maio com total de R$ 2.242.130,09.
 
 3) Avalie a satisfação dos clientes: i) notas; ii) estão realizando comentários?
+código da resposta: 3_satisfacao.py
+
 
 5.000000    62669
 4.000000    21056
@@ -25,6 +31,7 @@ Média calculada (considerando correções): 4.0001
 % vazias: 57.27%
 
 4) Existe algum padrão entre a satisfação do cliente com a entrega antes ou depois do prazo previsto?
+código da resposta: 4_atraso.py
 
 Resumo da satisfacao por prazo de entrega:
 - No prazo/antes: media=4.20 | qtd=100534
@@ -32,6 +39,7 @@ Resumo da satisfacao por prazo de entrega:
 Ha indicio de maior satisfacao quando a entrega ocorre no prazo/antes.
 
 5) Quais as categorias de produtos mais vendidos? E os menos vendidos? Existe relação com os preços dos itens? A quantidade de fotos impacta nas vendas?
+código da resposta: 5_categorias.py
 
 Categorias mais vendidas (top 5):
 - cama_mesa_banho: 11115
@@ -65,8 +73,38 @@ Esse valor -0,620 indica uma correlação negativa moderada a forte entre a quan
 Importante: isso não prova causalidade. Esse resultado pode estar refletindo mix de categorias (ex.: categorias com mais fotos vendem menos), preços, ou outros fatores. É um sinal de associação agregada, não de causa direta.
 
 6) O volume e o peso dos produtos impactam no valor do frete?
+código da resposta: 6_frete.py
 
 Peso (g) x Frete: 0.610
 Volume (cm3) x Frete: 0.587
 
 Isso indica uma correlação positiva moderada entre peso/volume do produto e o valor do frete. Em termos práticos, à medida que o peso aumenta, o frete tende a aumentar também (r = 0,610). O mesmo ocorre com o volume: produtos maiores em volume costumam ter fretes mais altos (r = 0,587). Esses valores sugerem impacto relevante, mas não perfeito — ou seja, peso e volume explicam parte do frete, mas outros fatores (distância, região, modalidade de envio, promoções) também influenciam.
+
+7) Avaliação/Visualização da posição geográfica onde se encontra a maior concentração de clientes e vendedores
+código da resposta: 7_geolocalizacao.py
+
+Estados com maior concentracao de clientes (top 10):
+- SP: 47820
+- RJ: 14669
+- MG: 13220
+- RS: 6269
+- PR: 5787
+- SC: 4201
+- BA: 3821
+- DF: 2421
+- GO: 2346
+- ES: 2264
+Estados com maior concentracao de vendedores (top 10):
+- SP: 80342
+- MG: 8827
+- PR: 8671
+- RJ: 4818
+- SC: 4075
+- RS: 2199
+- DF: 899
+- BA: 643
+- GO: 520
+- PE: 448
+Cidade que mais comprou: sao paulo (17946)
+Cidade que mais vendeu: sao paulo (27983)
+
