@@ -108,3 +108,11 @@ Estados com maior concentracao de vendedores (top 10):
 Cidade que mais comprou: sao paulo (17946)
 Cidade que mais vendeu: sao paulo (27983)
 
+8) As entregas atrasadas aconteceram entre vendedores/compradores de estados diferentes?
+código da resposta: 8_atraso_estado.py
+
+Atrasos por relacao entre estados:
+- Estados diferentes: 6331 (72.64%)
+- Mesmo estado: 2384 (27.36%)
+
+9) Identificar o padrão dos clientes (localização, método de pagamento, parcelas, entrega antes da previsão, notas, tipos de produtos) que fizeram recompra
