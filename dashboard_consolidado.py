@@ -82,11 +82,12 @@ with tab_vendas:
     st.divider()
     st.subheader("Perfil do Cliente Recorrente (Recompra)")
     st.markdown("""
-    Análise de 11.978 clientes que voltaram a comprar:
+    Análise de **11.978 clientes** que voltaram a comprar (110.018 registros analisados):
     - **Localização Principal:** São Paulo (Capital e Estado)
-    - **Pagamento Preferido:** Cartão de Crédito (1x)
-    - **Experiência de Entrega:** Recebimento no prazo ou antecipado
-    - **Satisfação:** Nota 5 predominante
+    - **Pagamento Preferido:** Cartão de Crédito (83.165 registros) — parcela mais comum: 1x (52.811)
+    - **Experiência de Entrega:** Recebimento no prazo ou antecipado (92,16%)
+    - **Satisfação:** Nota 5 predominante (60.828 registros)
+    - **Categoria Mais Comprada:** Cama Mesa Banho (10.826 registros)
     """)
 
 # --- ABA 3: Satisfação ---
@@ -140,6 +141,24 @@ with tab_produtos:
         st.dataframe(df_bottom, hide_index=True, use_container_width=True)
         
     st.divider()
+    st.subheader("Preço Médio por Categoria")
+    c3, c4 = st.columns(2)
+    with c3:
+        st.markdown("**Top 5 Menores Preços**")
+        df_preco_menor = pd.DataFrame({
+            "Categoria": ["Casa Conforto 2", "Flores", "Fraldas Higiene", "CDs/DVDs Musicais", "Alimentos Bebidas"],
+            "Preço Médio (R$)": [25.34, 33.64, 40.19, 52.14, 54.60]
+        })
+        st.dataframe(df_preco_menor, hide_index=True, use_container_width=True)
+    with c4:
+        st.markdown("**Top 5 Maiores Preços**")
+        df_preco_maior = pd.DataFrame({
+            "Categoria": ["Instrumentos Musicais", "Agro Indústria e Comércio", "Eletrodomésticos 2", "Portáteis Casa Forno e Café", "PCs"],
+            "Preço Médio (R$)": [281.62, 342.12, 476.12, 624.29, 1098.34]
+        })
+        st.dataframe(df_preco_maior, hide_index=True, use_container_width=True)
+
+    st.divider()
     st.markdown("### 📸 Fotos vs Vendas")
     
     col_foto1, col_foto2 = st.columns([1, 2])
@@ -163,17 +182,25 @@ with tab_geo:
     
     c1, c2 = st.columns(2)
     with c1:
-        st.subheader("Top 5 Estados (Clientes)")
+        st.subheader("Top 10 Estados (Clientes)")
         df_cli_uf = pd.DataFrame({
-            "Estado": ["SP", "RJ", "MG", "RS", "PR"],
-            "Clientes": [47820, 14669, 13220, 6269, 5787]
+            "Estado": ["SP", "RJ", "MG", "RS", "PR", "SC", "BA", "DF", "GO", "ES"],
+            "Clientes": [47820, 14669, 13220, 6269, 5787, 4201, 3821, 2421, 2346, 2264]
         })
-        st.bar_chart(df_cli_uf.set_index("Estado"))
-        
+        fig_cli = px.bar(df_cli_uf, x="Estado", y="Clientes", text="Clientes", title="Clientes por Estado")
+        st.plotly_chart(fig_cli, use_container_width=True)
+
     with c2:
-        st.subheader("Top 5 Estados (Vendedores)")
+        st.subheader("Top 10 Estados (Vendedores)")
         df_vend_uf = pd.DataFrame({
-            "Estado": ["SP", "MG", "PR", "RJ", "SC"],
-            "Vendedores": [80342, 8827, 8671, 4818, 4075]
+            "Estado": ["SP", "MG", "PR", "RJ", "SC", "RS", "DF", "BA", "GO", "PE"],
+            "Vendedores": [80342, 8827, 8671, 4818, 4075, 2199, 899, 643, 520, 448]
         })
-        st.bar_chart(df_vend_uf.set_index("Estado"))
+        fig_vend = px.bar(df_vend_uf, x="Estado", y="Vendedores", text="Vendedores", title="Vendedores por Estado")
+        st.plotly_chart(fig_vend, use_container_width=True)
+
+    st.divider()
+    st.subheader("Cidades Destaque")
+    col_cid1, col_cid2 = st.columns(2)
+    col_cid1.metric("Cidade que Mais Comprou", "São Paulo", "17.946 compras")
+    col_cid2.metric("Cidade que Mais Vendeu", "São Paulo", "27.983 vendas")
